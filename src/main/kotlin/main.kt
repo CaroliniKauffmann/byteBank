@@ -1,66 +1,54 @@
 fun main() {
-    println("Bem vindo ao ByteBank!")
-    val contaJoel = Conta()
-    contaJoel.titular = "Joel"
-    contaJoel.numero = 9536
-    contaJoel.saldo = 200.00
+    println("Bem vindo ao Bytebank")
+    testaComportamentosConta()
+    val alex = Funcionario(
+        nome = "Alex",
+        cpf = "111.111.111-11",
+        salario = 1000.0
+    )
 
-    val contaCarol = Conta()
-    contaCarol.titular = "Carol"
-    contaCarol.numero = 9569
-    contaCarol.saldo = 250.0
+    println("nome ${alex.nome}")
+    println("cpf ${alex.cpf}")
+    println("salario ${alex.salario}")
+    println("bonificação ${alex.bonificacao}")
 
+    val fran = Gerente(
+        nome = "Fran",
+        cpf = "222.222.222-22",
+        salario = 2000.0,
+        senha = 1234
+    )
 
-    println(contaJoel.titular)
-    println(contaJoel.numero)
-    println(contaJoel.saldo)
+    println("nome ${fran.nome}")
+    println("cpf ${fran.cpf}")
+    println("salario ${fran.salario}")
+    println("bonificação ${fran.bonificacao}")
 
+    if(fran.autentica(1234)){
+        println("autenticou com sucesso")
+    } else {
+        println("falha na autentição")
+    }
 
-    println(contaCarol.titular)
-    println(contaCarol.numero)
-    println(contaCarol.saldo)
+    val gui = Diretor(
+        nome = "Gui",
+        cpf = "333.333.333-33",
+        salario = 4000.0,
+        senha = 4000,
+        plr = 200.0
+    )
 
-    println("Depositando na conta do Joel: ")
-    deposita(contaJoel, 500.0)
-    println(contaJoel.saldo)
+    println("nome ${gui.nome}")
+    println("cpf ${gui.cpf}")
+    println("salario ${gui.salario}")
+    println("bonificação ${gui.bonificacao}")
+    println("plr ${gui.plr}")
 
-    println("Depositando na conta da Carol: ")
-    deposita(contaCarol, 100.0)
-    println(contaCarol.saldo)
-
-}
-
-fun deposita(conta: Conta, valor: Double) {
-    conta.saldo += valor
-
-}
-class Conta {
-    var titular = ""
-    var numero = 0
-    var saldo = 0.0
-
-}
-
-fun testaCopiasEReferencias(){
-
-
-    val numeroX = 10
-    var numeroY = numeroX
-    numeroY++
-
-    println("numeroX $numeroX")
-    println("numeroY $numeroY")
-
-    val contaJoao = Conta()
-    contaJoao.titular = "João"
-    var contaMaria = contaJoao
-    contaMaria.titular = "Maria"
-
-    println("titular conta joao: ${contaJoao.titular}")
-    println("titular conta maria: ${contaMaria.titular}")
-
-    println(contaJoao)
-    println(contaMaria)
+    if(fran.autentica(4000)){
+        println("autenticou com sucesso")
+    } else {
+        println("falha na autentição")
+    }
 
 }
 
